@@ -24,10 +24,12 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: 'Write Config & Key Files'
+        env:
+            SUPER_SECRET: ${{ secrets.OCI_REGION }}
         run: |
           mkdir ~/.oci
           echo "[DEFAULT]" >> ~/.oci/config
-          echo "user=PAVELSJO" >> ~/.oci/config
+          echo "user=SUPER_SECRET" >> ~/.oci/config
           echo "fingerprint=${{secrets.OCI_FINGERPRINT}}" >> ~/.oci/config
           echo "pass_phrase=${{secrets.OCI_PASSPHRASE}}" >> ~/.oci/config
           echo "region=${{secrets.OCI_REGION}}" >> ~/.oci/config
