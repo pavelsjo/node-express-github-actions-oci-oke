@@ -9,9 +9,9 @@ on:
 
 env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-  IMAGE_NAME: jit2600/ciapiapp:latest
-  DEPLOYMENT_NAME: ciapiapp
-  PORT: 5000
+  IMAGE_NAME: pavelsjo/node-web-app:latest
+  DEPLOYMENT_NAME: node-web-app
+  PORT: 8080
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
