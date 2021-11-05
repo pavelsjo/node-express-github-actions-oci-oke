@@ -9,9 +9,9 @@ on:
 
 env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
-  IMAGE_NAME: pavelsjo/node-web-app:latest
-  DEPLOYMENT_NAME: node-web-app
-  PORT: 8080
+  IMAGE_NAME: jit2600/ciapiapp:latest
+  DEPLOYMENT_NAME: ciapiapp
+  PORT: 5000
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -58,7 +58,6 @@ jobs:
           
       - name: 'Deploy the API on OKE'
         run: |
-          kubectl delete deployment $DEPLOYMENT_NAME
           kubectl create deployment $DEPLOYMENT_NAME --image=$IMAGE_NAME --dry-run -o yaml > deployment.yaml
           kubectl apply -f deployment.yaml
           kubectl rollout status deployment/$DEPLOYMENT_NAME
