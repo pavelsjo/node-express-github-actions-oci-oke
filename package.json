@@ -1,19 +1,13 @@
 {
-  "name": "action",
+  "name": "docker_web_app",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pavelsjo/node-action.git"
+  "description": "Node.js on Docker",
+  "author": "First Last <first.last@example.com>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/pavelsjo/node-action/issues"
-  },
-  "homepage": "https://github.com/pavelsjo/node-action#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.16.1"
   }
 }
