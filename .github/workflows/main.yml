@@ -27,7 +27,7 @@ jobs:
         run: echo Hello, world!
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
+      - name: Write Config & Key Files
         run: |
           mkdir ~/.oci
           echo "[DEFAULT]" >> ~/.oci/config
@@ -37,8 +37,19 @@ jobs:
           echo "tenancy=${{secrets.OCI_TENANCY_OCID}}" >> ~/.oci/config
           echo "key_file=~/.oci/key.pem" >> ~/.oci/config
           echo "${{secrets.OCI_KEY_FILE}}" >> ~/.oci/key.pem
+      - name: log untrusted output
+        run: |
+
+          # disable command workflow processing
+          echo "::stop-commands::`echo -n ${{ github.token }} | sha256sum | head -c 64`"
+
+          # log untrusted output
+          echo "untrusted output"
+
+          # enable workflow command processing
+          echo "::`echo -n ${{ github.token }} | sha256sum | head -c 64`::"
       
-      - name: 'Install OCI CLI'
+      - name: Install OCI CLI
         run: |
           curl -L -O https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh
           chmod +x install.sh
@@ -46,12 +57,12 @@ jobs:
           echo "::add-path::/home/runner/bin"
           exec -l $SHELL
       
-      - name: 'Fix Config File Permissions'
+      - name: Fix Config File Permissions
         run: |
           oci setup repair-file-permissions --file /home/runner/.oci/config
           oci setup repair-file-permissions --file /home/runner/.oci/key.pem
         
-      - name: 'Download the KUBECONFIG'
+      - name: Download the KUBECONFIG
         run: |
           mkdir -p ~/.kube
           oci ce cluster create-kubeconfig --cluster-id ${{ secrets.OKE_OCID }} --file ~/.kube/config --region ${{secrets.OCI_REGION}} --token-version 2.0.0 
