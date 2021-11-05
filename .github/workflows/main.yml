@@ -58,6 +58,7 @@ jobs:
           
       - name: 'Deploy the API on OKE'
         run: |
+          kubectl delete deployment $DEPLOYMENT_NAME
           kubectl create deployment $DEPLOYMENT_NAME --image=$IMAGE_NAME --dry-run -o yaml > deployment.yaml
           kubectl apply -f deployment.yaml
           kubectl rollout status deployment/$DEPLOYMENT_NAME
