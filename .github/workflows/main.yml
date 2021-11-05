@@ -35,9 +35,12 @@ jobs:
           echo "tenancy=${{secrets.OCI_TENANCY_OCID}}" >> ~/.oci/config
           echo "region=${{secrets.OCI_REGION}}" >> ~/.oci/config         
           echo "${{secrets.OCI_PASSPHRASE}}" >> ~/.oci/key.pem
-          chmod 0600 ~/.oci/key.pem
           echo "key_file=~/.oci/key.pem" >> ~/.oci/config    
       
+      - name: 'Fix Config File Permissions'
+        run: |
+          oci setup repair-file-permissions --file ~/.oci/config
+          oci setup repair-file-permissions --file ~/.oci/key.pem
       - name: 'Install OCI CLI'
         run: |
           curl -L -O https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh
