@@ -1,4 +1,4 @@
-# Github Actions for Node Using Oracle Cloud Infrastructure
+# Github Actions for Node setup using Oracle Cloud Infrastructure
 
 ## References
 
