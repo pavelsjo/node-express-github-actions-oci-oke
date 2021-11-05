@@ -4,7 +4,7 @@
 
 This repo contains the min requeriments to deploy an `Node Express Application` in `Oracle Kubernetes Engine (OKE)` and the automation pipeline with `github actions`.
 
-![img](./media/diagram.github-actions-oke.png)
+![img](./media/diagram-github-actions-oke.png)
 
 ## Setup
 
