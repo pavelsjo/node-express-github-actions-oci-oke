@@ -1,4 +1,4 @@
-# Github Actions setup for Express App with Oracle Cloud Infrastructure (OCI) - OKE
+# Github Actions setup to Deploy Node Express App in Oracle Cloud Infrastructure (OCI) - OKE
 
 This repo contains the min requeriments to deploy an Express Application in Oracle Kubernetes Engine (OKE) and the automation pipeline with github actions.
 
