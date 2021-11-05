@@ -1,5 +1,7 @@
 # Github Actions setup for Node App using Oracle Cloud Infrastructure (OCI)
 
+![img](./media/diagram.github-actions-oke.png)
+
 ## References
 
 - [CI/CD on Oracle Kubernetes Engine using Github Action](https://blog.kube-mesh.io/ci-cd-on-oracle-kubernetes-engine-using-github-action/)
