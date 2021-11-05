@@ -39,8 +39,9 @@ jobs:
       
       - name: 'Fix Config File Permissions'
         run: |
-          oci setup repair-file-permissions --file ~/.oci/config
-          oci setup repair-file-permissions --file ~/.oci/key.pem
+          oci setup repair-file-permissions --file /home/runner/.oci/key.pem
+          oci setup repair-file-permissions --file /home/runner/.oci/config
+          
       - name: 'Install OCI CLI'
         run: |
           curl -L -O https://raw.githubusercontent.com/oracle/oci-cli/master/scripts/install/install.sh
