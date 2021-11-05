@@ -36,11 +36,6 @@ jobs:
           echo "region=${{secrets.OCI_REGION}}" >> ~/.oci/config         
           echo "${{secrets.OCI_PASSPHRASE}}" >> ~/.oci/key.pem
           echo "key_file=~/.oci/key.pem" >> ~/.oci/config    
-      
-      - name: 'Fix Config File Permissions'
-        run: |
-          oci setup repair-file-permissions --file /home/runner/.oci/key.pem
-          oci setup repair-file-permissions --file /home/runner/.oci/config
           
       - name: 'Install OCI CLI'
         run: |
@@ -49,6 +44,11 @@ jobs:
           ./install.sh --accept-all-defaults
           echo "::add-path::/home/runner/bin"
           exec -l $SHELL
+          
+      - name: 'Fix Config File Permissions'
+        run: |
+          oci setup repair-file-permissions --file ~/.oci/key.pem
+          oci setup repair-file-permissions --file ~/.oci/config
       
       - name: 'Download the KUBECONFIG'
         run: |
