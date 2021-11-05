@@ -25,17 +25,22 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: 'Write Config & Key Files'
         env:
-            SUPER_SECRET: ${{ secrets.OCI_REGION }}
+            OCI_USER_OCID: ${{ secrets.OCI_USER_OCID }}
+            OCI_FINGERPRINT: ${{ secrets.OCI_FINGERPRINT }}
+            OCI_PASSPHRASE: ${{ secrets.OCI_PASSPHRASE }}
+            OCI_REGION: ${{ secrets.OCI_REGION }}
+            OCI_TENANCY_OCID: ${{ secrets.OCI_TENANCY_OCID }}
+            OCI_KEY_FILE: ${{ secrets.OCI_KEY_FILE }}
         run: |
           mkdir ~/.oci
           echo "[DEFAULT]" >> ~/.oci/config
-          echo "user=SUPER_SECRET" >> ~/.oci/config
-          echo "fingerprint=${{secrets.OCI_FINGERPRINT}}" >> ~/.oci/config
-          echo "pass_phrase=${{secrets.OCI_PASSPHRASE}}" >> ~/.oci/config
+          echo "user=OCI_USER_OCID" >> ~/.oci/config
+          echo "fingerprint=OCI_FINGERPRINT" >> ~/.oci/config
+          echo "pass_phrase=OCI_PASSPHRASE" >> ~/.oci/config
           echo "region=${{secrets.OCI_REGION}}" >> ~/.oci/config
-          echo "tenancy=${{secrets.OCI_TENANCY_OCID}}" >> ~/.oci/config
+          echo "tenancy=OCI_TENANCY_OCID" >> ~/.oci/config
           echo "key_file=~/.oci/key.pem" >> ~/.oci/config
-          echo "${{secrets.OCI_KEY_FILE}}" >> ~/.oci/key.pem
+          echo "OCI_KEY_FILE" >> ~/.oci/key.pem
       
       - name: 'Install OCI CLI'
         run: |
