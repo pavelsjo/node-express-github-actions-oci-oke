@@ -1,11 +1,11 @@
 # This is a basic workflow to help you get started with Actions
-name: CI
+name: Deploy to OKE OCI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
@@ -26,14 +26,14 @@ jobs:
       - name: 'Write Config & Key Files'
         run: |
           mkdir ~/.oci
-          echo [DEFAULT] >> ~/.oci/config
-          echo user=${{secrets.OCI_USER_OCID}} >> ~/.oci/config
-          echo fingerprint=${{secrets.OCI_FINGERPRINT}} >> ~/.oci/config
-          echo pass_phrase=${{secrets.OCI_PASSPHRASE}} >> ~/.oci/config
-          echo region=${{secrets.OCI_REGION}} >> ~/.oci/config
-          echo tenancy=${{secrets.OCI_TENANCY_OCID}} >> ~/.oci/config
-          echo key_file=~/.oci/key.pem >> ~/.oci/config
-          echo ${{secrets.OCI_KEY_FILE}} >> ~/.oci/key.pem
+          echo "[DEFAULT]" >> ~/.oci/config
+          echo "user=PAVELSJO" >> ~/.oci/config
+          echo "fingerprint=${{secrets.OCI_FINGERPRINT}}" >> ~/.oci/config
+          echo "pass_phrase=${{secrets.OCI_PASSPHRASE}}" >> ~/.oci/config
+          echo "region=${{secrets.OCI_REGION}}" >> ~/.oci/config
+          echo "tenancy=${{secrets.OCI_TENANCY_OCID}}" >> ~/.oci/config
+          echo "key_file=~/.oci/key.pem" >> ~/.oci/config
+          echo "${{secrets.OCI_KEY_FILE}}" >> ~/.oci/key.pem
       
       - name: 'Install OCI CLI'
         run: |
