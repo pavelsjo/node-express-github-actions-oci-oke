@@ -45,11 +45,6 @@ jobs:
           echo "::add-path::/home/runner/bin"
           exec -l $SHELL
       
-      - name: 'Fix Config File Permissions'
-        run: |
-          oci setup repair-file-permissions --file /home/runner/.oci/config
-          oci setup repair-file-permissions --file /home/runner/.oci/key.pem
-      
       - name: 'Download the KUBECONFIG'
         run: |
           mkdir -p ~/.kube
