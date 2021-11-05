@@ -32,10 +32,10 @@ jobs:
           echo "[DEFAULT]" >> ~/.oci/config
           echo "user=${{secrets.OCI_USER_OCID}}" >> ~/.oci/config
           echo "fingerprint=${{secrets.OCI_FINGERPRINT}}" >> ~/.oci/config
-          echo "region=${{secrets.OCI_REGION}}" >> ~/.oci/config
           echo "tenancy=${{secrets.OCI_TENANCY_OCID}}" >> ~/.oci/config
-          echo "key_file=~/.oci/key.pem" >> ~/.oci/config
+          echo "region=${{secrets.OCI_REGION}}" >> ~/.oci/config         
           echo "${{secrets.OCI_PASSPHRASE}}" >> ~/.oci/key.pem
+          echo "key_file=~/.oci/key.pem" >> ~/.oci/config          
       
       - name: 'Install OCI CLI'
         run: |
