@@ -34,13 +34,13 @@ jobs:
         run: |
           mkdir ~/.oci
           echo "[DEFAULT]" >> ~/.oci/config
-          echo "user=OCI_USER_OCID" >> ~/.oci/config
-          echo "fingerprint=OCI_FINGERPRINT" >> ~/.oci/config
-          echo "pass_phrase=OCI_PASSPHRASE" >> ~/.oci/config
-          echo "region=${{secrets.OCI_REGION}}" >> ~/.oci/config
-          echo "tenancy=OCI_TENANCY_OCID" >> ~/.oci/config
-          echo "key_file=~/.oci/key.pem" >> ~/.oci/config
-          echo "OCI_KEY_FILE" >> ~/.oci/key.pem
+          echo user=OCI_USER_OCID >> ~/.oci/config
+          echo fingerprint=OCI_FINGERPRINT >> ~/.oci/config
+          echo pass_phrase=OCI_PASSPHRASE >> ~/.oci/config
+          echo region=OCI_REGION >> ~/.oci/config
+          echo tenancy=OCI_TENANCY_OCID >> ~/.oci/config
+          echo key_file=~/.oci/key.pem >> ~/.oci/config
+          echo OCI_KEY_FILE >> ~/.oci/key.pem
       
       - name: 'Install OCI CLI'
         run: |
